@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="70"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM tbl_peminjam order by nim]]>
+	</queryString>
+	<field name="nim" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="kd_buku" class="java.lang.String"/>
+	<field name="jdl_buku" class="java.lang.String"/>
+	<field name="tgl_terbit" class="java.sql.Date"/>
+	<field name="tgl_pinjam" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="143" y="15" width="505" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="28" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PEMINJAMAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="143" y="54" width="505" height="24" forecolor="#330066"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Perpustakaan Universitas Budi Luhur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="78" width="505" height="18"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Jalan Raya Ciledug, Petukangan Utara, Jakarta Selatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="96" width="505" height="18"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Phone (021) 5853753 ext: 278, 279 Email: pustaka@budiluhur.ac.id]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement x="1" y="0" width="142" height="125"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\Filosofi\\Documents\\NetBeansProjects\\Perpustakaan Budi Luhur\\beel.png"]]></imageExpression>
+			</image>
+			<image hAlign="Center">
+				<reportElement x="648" y="0" width="154" height="125"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\Filosofi\\Documents\\NetBeansProjects\\Perpustakaan Budi Luhur\\library.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="90" height="15" forecolor="#000000"/>
+				<textElement/>
+				<text><![CDATA[NIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="90" y="0" width="153" height="15" forecolor="#000000"/>
+				<textElement/>
+				<text><![CDATA[NAMA MAHASISWA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="243" y="0" width="113" height="15" forecolor="#000000"/>
+				<textElement/>
+				<text><![CDATA[KODE BUKU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="356" y="0" width="176" height="15" forecolor="#000000"/>
+				<textElement/>
+				<text><![CDATA[JUDUL BUKU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="532" y="0" width="133" height="15" forecolor="#000000"/>
+				<textElement/>
+				<text><![CDATA[TANGGAL TERBIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="665" y="0" width="133" height="15" forecolor="#000000"/>
+				<textElement/>
+				<text><![CDATA[TANGGAL PINJAM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="90" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nim}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="90" y="0" width="153" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nama}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="243" y="0" width="113" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{kd_buku}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="356" y="0" width="176" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{jdl_buku}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="532" y="0" width="133" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_terbit}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="665" y="0" width="133" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_pinjam}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#330066"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
